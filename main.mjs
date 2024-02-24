@@ -1,25 +1,23 @@
-import bookServices from './services/books.services.mjs';
-import { mapToBookDTO } from './adapters/book.adapter.mjs';
-import { generateBookCardTemplate } from './templates/bookCard.template.mjs';
-import { printOutBookInfo } from './utils/consoleOutput.utils.mjs';
+import BookService from './services/books.services.mjs';
+import { fetchBooks } from './services/googleAPIBooks.services.mjs';
+import { generateColumnLayoutElement, generateBookCardTemplate } from './templates/bookCard.template.mjs';
 
-function sortBooksByPublishedDate(books) {
-    return books.sort((a, b) => b.publishedDate - a.publishedDate);
-}
+async function myApp() {
+    // Fetch and map books...
+    const rawBooks = await fetchBooks();
+    const books = new BookService(rawBooks).sortBooksByPublishedDate().get();
 
-// function calcAVGRatingGivenCategory(books, category) {
-//     return books.filter(({ categories }) => Array.isArray(categories) && categories.includes(category));
-// }
-
-(async function() {
-    const rawBooks = await bookServices.fetchBooks();
-    const books = sortBooksByPublishedDate(mapToBookDTO(rawBooks));
-    
     // Console log...
-    printOutBookInfo(books);
+    console.log(books.toString());
 
-    // Attaching to DOM...
+    // Attach to DOM...
+    const targetElement = document.getElementById('books-container');
     const bookCardTemplates = books.map((book) => generateBookCardTemplate(book));
-    const target = document.getElementById('root');
-    bookCardTemplates.forEach((bookCardTemplate) => target.appendChild(bookCardTemplate));
-})();
+    bookCardTemplates.forEach((bookCardTemplate) => {
+        const element = generateColumnLayoutElement();
+        element.appendChild(bookCardTemplate);
+        targetElement.appendChild(element);
+    });
+};
+
+myApp();

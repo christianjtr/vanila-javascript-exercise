@@ -1,10 +1,24 @@
 class Book {
     constructor(book) {
-        this.title = book.title;
-        this.authors =  book.authors;
-        this.publishedDate =  new Date(book.publishedDate);
-        this.publisher = book.publisher || 'N/D';
-        this.categories = book.categories || 'N/D';
+        const { 
+            title, 
+            authors, 
+            publishedDate, 
+            publisher = 'N/D', 
+            categories = 'N/D',
+            thumbnailLink = '',
+            amount = 0,
+            buyLink = '',
+        } = book;
+
+        this.title = title;
+        this.authors =  authors;
+        this.publishedDate =  new Date(publishedDate);
+        this.publisher = publisher;
+        this.categories = categories;
+        this.thumbnailLink = thumbnailLink;
+        this.amount = amount;
+        this.buyLink = buyLink;
     }
 
     toString() {
@@ -14,34 +28,11 @@ class Book {
             ${this.authors.join(', ')}; 
             ${formatDate(this.publishedDate)}; 
             ${this.publisher}; 
-            ${this.categories}`;
+            ${this.categories}
+            SaleInfo: ${this.amount} at ${this.buyLink}`;
 
         return message;
     }
 }
 
-class AvailableBook extends Book {
-    constructor(book, listPrice = 0, buyLink = '') {
-        super(book);
-        this.listPrice =  listPrice;
-        this.buyLink = buyLink;
-    }
-
-    toString() {
-        const message = `${super.toString()} - ${this.listPrice} at ${this.buyLink}`;
-        return message;
-    }
-
-    getPrice() {
-        return this.listPrice;
-    }
-
-    getBuyLink() {
-        return this.buyLink;
-    }
-}
-
-export {
-    Book,
-    AvailableBook
-}
+export default Book;

@@ -1,34 +1,27 @@
-import { Book, AvailableBook } from "../models/book.mjs";
+import Book from "../models/book.mjs";
 
-function extractBaseBookData (book)  {
-    const { volumeInfo } = book;
+function getBookData (book)  {
+    const { volumeInfo, saleInfo } = book;
     return {
         title: volumeInfo.title, 
         authors: volumeInfo.authors, 
         publishedDate: volumeInfo.publishedDate, 
         publisher: volumeInfo.publisher, 
-        categories: volumeInfo.categories
-    }
+        categories: volumeInfo.categories,
+        thumbnailLink: volumeInfo.imageLinks?.thumbnail,
+        amount: saleInfo.listPrice?.amount,
+        buyLink: saleInfo.buyLink,
+    };
 }
 
-
-function mapToBookDTO (rawBooks) {
+function adaptToBooks (rawBooks) {
     const books = rawBooks.map((book) => {
-        return new Book(extractBaseBookData(book));
+        return new Book(getBookData(book));
     });
 
     return books;
 }
 
-function mapToAvailableBookDTO (rawBooks) {
-    const availableBooks = rawBooks.map(({ saleInfo, ...book}) => {
-        return new AvailableBook(extractBaseBookData(book), saleInfo.listPrice?.amount, saleInfo.buyLink);
-    });
-
-    return availableBooks;
-}
-
 export {
-    mapToBookDTO,
-    mapToAvailableBookDTO,
+    adaptToBooks,
 };
