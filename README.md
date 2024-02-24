@@ -9,14 +9,14 @@ V.g. Javascript: The definitive guide (Activate your Web
 Pages), David Flanagan, 2011-04-18, “O’Reilly Media, Inc.”,
 [Computers]
 ```
-Consider adding appropriate method to the object constructor to create a forma􀆩ed
+Consider adding appropriate method to the object constructor to create a formated
 string.
 - Do the following tasks:
     - Sort the Array created in 1) by publishedDate and output in console.
     - Calculate and output the average rating of the “Computers” books.
 - Do the following tasks:
     - Extend the basic Book object and create a new AvailableBook object constructor that inherits all basic book properties and adds 2 new properties for listPrice (listPrice.amount) and buyLink.
-    - Every AvailableBook instance show now have 2 additional methods: getPrice() and getBuyLink() that returns the price and the link respectively. Also overwrite the toString() method for an extended forma􀆩ed representation of an AvailableBook instance by adding the additional properties:
+    - Every AvailableBook instance show now have 2 additional methods: getPrice() and getBuyLink() that returns the price and the link respectively. Also overwrite the toString() method for an extended formated representation of an AvailableBook instance by adding the additional properties:
 ```
 V.g. … - 43.56€ at
 https://play.google.com/store/books/details?id=6TA0DdEIxrgC
@@ -38,7 +38,7 @@ git clone https://github.com/christianjtr/<NAME>.git
 ```
 
 
-Noticed you will need `live server` to launch the project.
+Noticed you will need a `live server` to launch the project.
 
 **Alternatives**
 
