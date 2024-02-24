@@ -5,10 +5,14 @@ import { generateColumnLayoutElement, generateBookCardTemplate } from './templat
 async function myApp() {
     // Fetch and map books...
     const rawBooks = await fetchBooks();
-    const books = new BookService(rawBooks).sortBooksByPublishedDate().get();
+    const booksService = new BookService(rawBooks);
+    const books = booksService.sortBooksByPublishedDate().get();
 
-    // Console log...
-    console.log(books.toString());
+    // Books...
+    console.log({ books: books.toString() });
+
+    // AVG rating by category = 'Computers'
+    console.log('Calculate and output the average rating of the “Computers” books. =', booksService.getAVGRatingByCategory('Computers'));
 
     // Attach to DOM...
     const targetElement = document.getElementById('books-container');

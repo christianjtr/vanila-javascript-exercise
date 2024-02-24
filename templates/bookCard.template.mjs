@@ -28,7 +28,7 @@ function generateBookCardTemplate(book) {
                 <span class="is-block"><strong>Publisher:</strong> ${book.publisher}</span>
                 <span class="is-block"><strong>Categories:</strong> ${book.categories}</span>
                 <span class="is-block"><strong>Price:</strong> ${book.amount}$</span>
-                <time datetime="${book.publishedDate}">${book.publishedDate.toISOString()}</time>
+                <time datetime="${book.publishedDate}">${book.publishedDate.toLocaleDateString('en-US', { year: 'numeric', month: 'numeric', day: 'numeric' })}</time>
                 <a class="is-block" href="${book.buyLink}" target="_blank">Buy here</a>
             </div>    
         </div>

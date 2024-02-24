@@ -25,6 +25,18 @@ class BookService {
         return this;
     }
 
+    getAVGRatingByCategory(category) {
+        const ratings = this.books
+        .filter(({ categories }) => categories.includes(category))
+        .map(({ averageRating }) => averageRating)
+        .map(Number)
+        .filter((value => !isNaN(value)));
+
+        const sum = ratings.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+        const result = sum / ratings.length;
+        return result;
+    }
+
     toString() {
         return this.books.map((book) => book.toString()).join(', ');
     }

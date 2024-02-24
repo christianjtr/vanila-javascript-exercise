@@ -11,6 +11,7 @@ function getBookData (book)  {
         thumbnailLink: volumeInfo.imageLinks?.thumbnail,
         amount: saleInfo.listPrice?.amount,
         buyLink: saleInfo.buyLink,
+        averageRating: volumeInfo.averageRating,
     };
 }
 

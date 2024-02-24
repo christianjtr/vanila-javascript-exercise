@@ -9,6 +9,7 @@ class Book {
             thumbnailLink = '',
             amount = 0,
             buyLink = '',
+            averageRating,
         } = book;
 
         this.title = title;
@@ -19,6 +20,7 @@ class Book {
         this.thumbnailLink = thumbnailLink;
         this.amount = amount;
         this.buyLink = buyLink;
+        this.averageRating = averageRating;
     }
 
     toString() {
@@ -30,6 +32,21 @@ class Book {
             ${this.publisher}; 
             ${this.categories}
             SaleInfo: ${this.amount} at ${this.buyLink}`;
+
+        return message;
+    }
+}
+
+class AvailableBook extends Book {
+    constructor(book, listPrice, buyLink) {
+        super(book);
+        this.listPrice = listPrice;
+        this.buyLink = buyLink;
+    }
+
+    toString() {
+        const message = `
+            ${super.toString()} - ${this.listPrice}$ at ${this.buyLink}`;
 
         return message;
     }
