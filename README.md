@@ -1,4 +1,8 @@
-# Task/exercises for candidates as frontend developers.
+# Assestment
+
+Follow the next tasks in order to develop a basic book list using vanilla javascript.
+
+## Task/exercises for candidates as frontend developers.
 1.- Using public Google Books API `httpps://www.googleapis.com/books/v1/volumes?q=javascript` (No API key necessary) do the next:
 - Before executing the request, you must create a new Book object constructor, which contains properties for: **title, authors, publishedDate, publisher and categories**.
 - Iterate through the response content and create Book object instances that you prepared in previous step, with available values for each found book and store them in a new Array.

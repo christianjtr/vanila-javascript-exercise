@@ -52,4 +52,7 @@ class AvailableBook extends Book {
     }
 }
 
-export default Book;
+export {
+    Book,
+    AvailableBook,
+};

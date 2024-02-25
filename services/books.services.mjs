@@ -1,6 +1,8 @@
 import { adaptToBooks } from "../adapters/book.adapter.mjs";
 
 class BookService {
+    #books;
+    
     constructor(books = []) {
         this.books = adaptToBooks(books);
     }

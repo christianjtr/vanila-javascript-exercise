@@ -1,4 +1,4 @@
-import Book from "../models/book.mjs";
+import { Book, AvailableBook } from "../models/book.mjs";
 
 function getBookData (book)  {
     const { volumeInfo, saleInfo } = book;
@@ -23,6 +23,16 @@ function adaptToBooks (rawBooks) {
     return books;
 }
 
+function adaptToAvailableBooks (rawBooks) {
+    const availableBooks = rawBooks.map((book) => {
+        const { saleInfo } = book;
+        return new AvailableBook(getBookData(book), saleInfo.listPrice?.amount, saleInfo.buyLink);
+    });
+
+    return availableBooks;
+}
+
 export {
     adaptToBooks,
+    adaptToAvailableBooks
 };

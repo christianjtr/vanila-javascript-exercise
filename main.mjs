@@ -12,7 +12,7 @@ async function myApp() {
     console.log({ books: books.toString() });
 
     // AVG rating by category = 'Computers'
-    console.log('Calculate and output the average rating of the “Computers” books. =', booksService.getAVGRatingByCategory('Computers'));
+    console.log('Average rating of the “Computers” books =', booksService.getAVGRatingByCategory('Computers'));
 
     // Attach to DOM...
     const targetElement = document.getElementById('books-container');
